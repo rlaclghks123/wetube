@@ -1,46 +1,21 @@
-export const videos =[
-    {
-        id:1,
-        title:"chiman",
-        description:"nice",
-        views:24,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator :{
-            id:333,
-            name :"chiman",
-            email:"chi@man.com",
+import mongoose  from "mongoose";
+import dotenv from "dotenv";
 
-        }
+dotenv.config();
 
-    },
+mongoose.connect(
+     process.env.MONGO_URL,
+{
+        useNewUrlParser: true,
+        useFindAndModify:false,
+        useUnifiedTopology: true
+}
+);
 
-    {
-        id:2,
-        title:"jian",
-        description:"good",
-        views:25,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator :{
-            id:444,
-            name :"chiman",
-            email:"chi@man.com",
+ const db = mongoose.connection;
 
-        }
+ const handleOpen = () => console.log("✅ connected DB");
+ const handleError = (error) => console.log(`❌ error on DB Connection : ${error}`);
 
-    },
-
-    {
-        id:3,
-        title:"winter",
-        description:"perfect",
-        views:26,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator :{
-            id:555,
-            name :"chiman",
-            email:"chi@man.com",
-
-        }
-
-    }
-]
+ db.once("open", handleOpen);
+ db.on("error", handleError);
