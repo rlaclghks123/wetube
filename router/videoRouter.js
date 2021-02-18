@@ -2,6 +2,7 @@ import express from "express";
 import { deleteVideo, getEditVideo,postEditVideo, getUpload,postUpload, videoDetail} from "../controllers/videoController";
 import routes from "../routes";
 import {uploadVideo} from "../localMiddleware";
+
 const videoRouter = express.Router();
 
 //Upload                 
