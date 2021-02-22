@@ -18,6 +18,7 @@ app.use(function(req, res, next) {
 
 app.set("view engine", "pug");
 app.use("/uploads",express.static("uploads"));
+app.use("/static",express.static("static"));
 
 app.use(helmet({ contentSecurityPolicy: false}));
 app.use(cookieParser());

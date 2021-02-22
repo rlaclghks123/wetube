@@ -23,6 +23,7 @@ export const getLogin=(req,res)=>{
 
 export const postLogin=(req,res)=>{
     res.redirect(routes.home);
+    
 }
 
 
