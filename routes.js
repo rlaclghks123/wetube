@@ -18,6 +18,7 @@ const VIDEO_DETAIL="/:id";
 const EDIT_VIDEO="/:id/edit";
 const DELETE_VIDEO="/:id/delete";
 
+
 const routes ={
     home :HOME,
     join : JOIN,

@@ -1,0 +1,25 @@
+.social-login {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  button {
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    &:first-child {
+      margin-bottom: 10px;
+      border: none;
+      background-color: $black;
+      color: white;
+      i {
+        margin-right: 2px;
+      }
+    }
+    &:last-child {
+      background-color: #3a5998;
+      color: white;
+      i {
+        margin-right: 2px;
+      }
+    }
+  }
+}

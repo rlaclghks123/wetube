@@ -1,0 +1,49 @@
+.header {
+  background-color: $red;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  box-sizing: inherit;
+  .header__column {
+    width: 33%;
+    &:first-child {
+      a {
+        display: flex;
+        justify-content: center;
+        font-size: 35px;
+        color: white;
+        &:active {
+          color: white;
+        }
+      }
+    }
+    &:nth-child(2) {
+      form {
+        input {
+          width: 100%;
+          border-radius: 3px;
+          height: 23px;
+        }
+      }
+    }
+    &:last-child {
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        li {
+          margin: 0px 10px;
+          a {
+            color: white;
+            &:active,
+            &:visited {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
