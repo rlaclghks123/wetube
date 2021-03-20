@@ -9,14 +9,19 @@
       margin-bottom: 10px;
       border: none;
       background-color: $black;
-      color: white;
+      a {
+        color: white;
+      }
       i {
         margin-right: 2px;
       }
     }
     &:last-child {
-      background-color: #3a5998;
+      background-color: $yellow;
       color: white;
+      a:visited {
+        color: inherit;
+      }
       i {
         margin-right: 2px;
       }

@@ -10,6 +10,7 @@ const USERS = "/users";
 const EDIT_PROFILE="/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 const USER_DETAIL = "/:id";
+const ME ="/me";
 
 //video
 const VIDEOS = "/videos";
@@ -18,6 +19,14 @@ const VIDEO_DETAIL="/:id";
 const EDIT_VIDEO="/:id/edit";
 const DELETE_VIDEO="/:id/delete";
 
+//github
+const GITHUB ="/auth/github";
+const GITHUB_CALLBACK="/auth/github/callback";
+
+//kakaoTalk
+
+const KAKAO ="/auth/kakao";
+const KAKAO_CALLBACK="/auth/kakao/callback";
 
 const routes ={
     home :HOME,
@@ -57,6 +66,11 @@ const routes ={
         }else{
             return DELETE_VIDEO;
         }
-    }
+    },
+    gitHub:GITHUB,
+    gitHubCallBack:GITHUB_CALLBACK,
+    kakao:KAKAO,
+    kakaoCallBack : KAKAO_CALLBACK,
+    me:ME
 };
 export default routes;

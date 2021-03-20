@@ -22,6 +22,7 @@ const MongoStore = require("connect-mongo").default;
 
 
 app.set("view engine", "pug");
+
 app.use("/uploads",express.static("uploads"));
 app.use("/static",express.static("static"));
 
