@@ -17,7 +17,6 @@ export const search = async(req,res)=>{
         query: {term:searchingBy}       //신식방법
     } = req;
     // const searchingBy = req.query.term; 구식방법
-
     let videos=[];
     try{
         videos= await Video.find({title: {$regex:searchingBy,$options : "i" }});
@@ -41,24 +40,27 @@ export const postUpload= async(req,res)=>{
     const newVideo = await Video.create({
         fileUrl:path,
         title,
-        description
+        description,
+        creator : req.user.id
     })
-    console.log(newVideo);
+    req.user.videos.push(newVideo.id);
+    req.user.save();
     res.redirect(routes.videoDetail(newVideo.id));
 }
 
 export const videoDetail= async (req,res)=>{
+    const{
+        params:{id}
+    }=req;
+
     try{
-        const{
-            params:{id}
-        }=req;
-        const video = await Video.findById(id);
-        res.render("videoDetail",{pageTitle : `${video.title}`,video});
+        const video = await Video.findById(id).populate("creator");
+        res.render("videoDetail",{pageTitle : video.title, video});
     }
     catch(error){
         res.redirect(routes.home);
     }
-}
+};
 
 export const getEditVideo= async(req,res)=>{
     const {
@@ -66,7 +68,11 @@ export const getEditVideo= async(req,res)=>{
     }=req;
     try{
         const video = await Video.findById(id);
-        res.render("editVideo",{pageTitle :  `Edit${video.title}`,video });
+        if(video.creator.toString()!== req.user.id){
+            throw Error();
+        }else{
+            res.render("editVideo",{pageTitle :  `Edit${video.title}`,video });
+        }
     }
     catch(error){
         res.redirect(routes.home);
@@ -87,11 +93,19 @@ export const postEditVideo=async (req,res)=>{
 }
 
 export const deleteVideo=async (req,res)=>{
+    const{
+        params:{id}
+    }=req;
     try{
-        const{
-            params:{id}
-        }=req;
-        await Video.findOneAndRemove({_id:id})
+        const video = await Video.findById(id);
+        if(video.creator.toString()!== req.user.id){
+          
+            throw Error();
+        }else{
+            
+            await Video.findOneAndRemove({_id:id})
+        }
+        
        
     }catch(error){
         console.log(error);

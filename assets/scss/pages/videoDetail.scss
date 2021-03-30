@@ -12,9 +12,7 @@
   }
   .video__info {
     width: 100%;
-
     margin-top: 10px;
-
     a {
       background-color: #3498db;
       color: white;
@@ -22,6 +20,7 @@
       font-size: 15px;
       border-radius: 5px;
       padding: 3px;
+
       span {
         font-size: 13px;
       }
@@ -36,6 +35,11 @@
     p.video__description {
       display: block;
       margin: 10px 0px;
+    }
+  }
+  .video__author {
+    a {
+      color: #3498db;
     }
   }
   .video__comments {
